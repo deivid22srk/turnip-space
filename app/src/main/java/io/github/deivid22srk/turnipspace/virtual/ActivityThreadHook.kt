@@ -26,9 +26,9 @@ import io.github.deivid22srk.turnipspace.common.AppLogger
  * fails the engine degrades to the StubActivity diagnostic screen instead
  * of crashing (see ARCHITECTURE.md → Known limitations).
  */
-object ActivityThreadHook {
+private const val TAG = "ActivityThreadHook"
 
-    private const val TAG = "ActivityThreadHook"
+object ActivityThreadHook {
 
     fun install(): Boolean {
         if (VirtualEngineRuntime.hookInstalled) return true

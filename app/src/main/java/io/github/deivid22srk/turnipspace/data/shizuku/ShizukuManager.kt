@@ -72,11 +72,22 @@ class ShizukuManager(private val context: Context) {
      * Runs a privileged shell command (e.g. `dumpsys gpu`) through Shizuku.
      * Returns null whenever Shizuku is unavailable — callers must handle it.
      * stderr is drained on a separate thread to avoid pipe-full deadlocks.
+     *
+     * NOTE: Shizuku.newProcess is private in the public API surface, so we
+     * reach it reflectively (it is a library class — hidden-API enforcement
+     * does not apply). Failure degrades to null, never a crash.
      */
     fun runCommand(command: String): String? {
         return try {
             if (state() != State.PERMISSION_GRANTED) return null
-            val process = Shizuku.newProcess(arrayOf("sh", "-c", command), null, null)
+            val method = Shizuku::class.java.getDeclaredMethod(
+                "newProcess",
+                Array<String>::class.java,
+                Array<String>::class.java,
+                String::class.java,
+            )
+            method.isAccessible = true
+            val process = method.invoke(null, arrayOf("sh", "-c", command), null, null) as Process
             val stderrDrain = Thread {
                 try {
                     process.errorStream.bufferedReader().use { it.readText() }

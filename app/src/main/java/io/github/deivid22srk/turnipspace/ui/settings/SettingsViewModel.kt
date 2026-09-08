@@ -7,8 +7,10 @@ import io.github.deivid22srk.turnipspace.TurnipSpaceApp
 import io.github.deivid22srk.turnipspace.common.AppLogger
 import io.github.deivid22srk.turnipspace.data.shizuku.ShizukuManager
 import io.github.deivid22srk.turnipspace.domain.UseCases
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 
 data class SettingsUiState(
     val shizukuState: ShizukuManager.State = ShizukuManager.State.NOT_INSTALLED,

@@ -30,6 +30,7 @@ import kotlinx.coroutines.launch
  * the optional Shizuku integration. The limitations page is a product
  * requirement — we never promise more than the engineering supports.
  */
+@OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class)
 @Composable
 fun OnboardingScreen(onFinished: () -> Unit) {
     val pages = 3

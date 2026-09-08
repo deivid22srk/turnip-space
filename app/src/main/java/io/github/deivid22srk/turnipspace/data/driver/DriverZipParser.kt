@@ -45,6 +45,7 @@ object DriverZipParser {
     fun parse(zipFile: File): Parsed {
         ZipFile(zipFile).use { zip ->
             val entries = zip.entries().asSequence().toList()
+            val entryNames = entries.filter { !it.isDirectory }.map { it.name }
 
             val metaEntry = entries.firstOrNull {
                 !it.isDirectory && (it.name == "meta.json" || it.name.endsWith("/meta.json"))
@@ -62,17 +63,17 @@ object DriverZipParser {
             }
 
             val declaredLib = meta.optString("library", "").ifBlank { null }
-            val libEntry = when {
-                declaredLib != null -> entries.firstOrNull {
-                    !it.isDirectory && it.removePrefix("lib/").substringAfterLast('/') == declaredLib
+            val libEntryName = when {
+                declaredLib != null -> entryNames.firstOrNull {
+                    it.substringAfterLast('/') == declaredLib
                 }
                 else -> null
-            } ?: entries.firstOrNull {
-                !it.isDirectory && it.substringAfterLast('/').startsWith("libvulkan") &&
-                    it.substringAfterLast('/').endsWith(".so")
+            } ?: entryNames.firstOrNull {
+                val simple = it.substringAfterLast('/')
+                simple.startsWith("libvulkan") && simple.endsWith(".so")
             } ?: throw DriverParseException("error_no_vulkan_so", "no libvulkan*.so entry in zip")
 
-            val libName = libEntry.substringAfterLast('/')
+            val libName = libEntryName.substringAfterLast('/')
 
             return Parsed(
                 name = name,
@@ -83,7 +84,7 @@ object DriverZipParser {
                 vendor = meta.optString("vendor", "").ifBlank { null },
                 moduleId = meta.optString("module_id", "").ifBlank { null },
                 libraryFileName = libName,
-                entries = entries.filter { !it.isDirectory }.map { it.name },
+                entries = entryNames,
             )
         }
     }

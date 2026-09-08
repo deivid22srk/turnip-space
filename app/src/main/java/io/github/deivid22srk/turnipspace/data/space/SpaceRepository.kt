@@ -13,9 +13,9 @@ import java.util.UUID
 /**
  * Registry of virtual spaces. Storage layout:
  *
- *   files/spaces/index.json          — space registry
- *   files/spaces/<id>/app/base.apk   — the user-provided APK (verbatim copy)
- *   files/spaces/<id>/lib/<abi>/*.so — extracted native libraries
+ *   files/spaces/index.json           — space registry
+ *   files/spaces/<id>/app/base.apk    — the user-provided APK (verbatim copy)
+ *   files/spaces/<id>/lib/<abi>/...   — extracted native libraries
  *   files/spaces/<id>/cache/optimized — DexClassLoader odex output dir
  */
 class SpaceRepository(private val context: Context) {

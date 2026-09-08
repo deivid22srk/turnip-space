@@ -90,12 +90,12 @@ object ElfSymbolParser {
             if (entry + nameSize > bytes.size) break
             val nameOff = intAt(bytes, entry.toInt())
             if (nameOff <= 0) continue
-            val strStart = strTab.offset + nameOff
-            if (strStart >= bytes.size) continue
-            var end = strStart.toInt()
-            while (end < bytes.size && bytes[end] != 0.toByte() && end - strStart < 256) end++
-            if (end > strStart) {
-                names.add(String(bytes, strStart.toInt(), end - strStart, Charsets.UTF_8))
+            val start = (strTab.offset + nameOff).toInt()
+            if (start >= bytes.size || start < 0) continue
+            var end = start
+            while (end < bytes.size && bytes[end] != 0.toByte() && end - start < 256) end++
+            if (end > start) {
+                names.add(String(bytes, start, end - start, Charsets.UTF_8))
             }
         }
         return Result(names, true, arch, null)
