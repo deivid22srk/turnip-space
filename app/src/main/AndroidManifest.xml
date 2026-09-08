@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Broad-but-reasonable permission set declared by the HOST so that
+         plugin apps running inside the virtual space can use them without
+         additional installation steps. Nothing here leaves the app sandbox. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.vulkan.version" android:required="false" />
+
+    <application
+        android:name=".TurnipSpaceApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TurnipSpace">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|uiMode">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Stub activities used by the virtual engine. The system launches the
+             stub (which IS installed); the engine swaps in the plugin activity
+             at Instrumentation.newActivity() time. -->
+        <activity android:name=".virtual.StubActivity" android:exported="false"
+            android:launchMode="standard" android:taskAffinity=""
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density" />
+        <activity android:name=".virtual.StubActivity1" android:exported="false"
+            android:launchMode="standard" android:taskAffinity=""
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density" />
+        <activity android:name=".virtual.StubActivity2" android:exported="false"
+            android:launchMode="standard" android:taskAffinity=""
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density" />
+        <activity android:name=".virtual.StubActivity3" android:exported="false"
+            android:launchMode="standard" android:taskAffinity=""
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density" />
+        <activity android:name=".virtual.StubActivity4" android:exported="false"
+            android:launchMode="standard" android:taskAffinity=""
+            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density" />
+
+        <!-- Shizuku (optional). The app must keep working when Shizuku is absent. -->
+        <provider
+            android:name="rikka.shizuku.ShizukuProvider"
+            android:authorities="${applicationId}.shizuku"
+            android:multiprocess="false"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    </application>
+
+    <queries>
+        <package android:name="moe.shizuku.privileged.api" />
+    </queries>
+</manifest>

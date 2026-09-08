@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Stylised turnip: white bulb with purple top and two green leaves. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- leaves -->
+    <path
+        android:fillColor="#5FB56B"
+        android:pathData="M54,34 C50,24 44,19 36,17 C45,13 53,17 56,26 C57,29 56,32 54,34 Z" />
+    <path
+        android:fillColor="#7BD089"
+        android:pathData="M56,34 C58,24 64,18 72,16 C64,12 55,16 53,25 C52,28 53,31 56,34 Z" />
+    <!-- bulb -->
+    <path
+        android:fillColor="#F2F4F8"
+        android:pathData="M54,34 C63,34 72,42 72,55 C72,68 63,80 54,84 C45,80 36,68 36,55 C36,42 45,34 54,34 Z" />
+    <!-- purple shoulder -->
+    <path
+        android:fillColor="#9C7BD8"
+        android:pathData="M54,34 C61,34 68,39 70,48 C65,51 59,52 54,52 C49,52 43,51 38,48 C40,39 47,34 54,34 Z" />
+    <!-- root tip -->
+    <path
+        android:fillColor="#D9DEE8"
+        android:pathData="M54,84 L52,90 L54,93 L56,90 Z" />
+</vector>

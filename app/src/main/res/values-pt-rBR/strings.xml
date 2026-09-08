@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Turnip Space</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_skip">Pular</string>
+    <string name="onboarding_next">Avançar</string>
+    <string name="onboarding_back">Voltar</string>
+    <string name="onboarding_done">Começar</string>
+    <string name="onboarding_welcome_title">Bem-vindo ao Turnip Space</string>
+    <string name="onboarding_welcome_body">O Turnip Space roda apps e jogos dentro de um espaço virtual gerenciado (sem root) e permite carregar drivers Vulkan Adreno Turnip personalizados, no formato .zip do AdrenoTools, nos apps executados por ele.</string>
+    <string name="onboarding_limits_title">Limitações honestas</string>
+    <string name="onboarding_limits_body">Leia com atenção antes de usar. Não vamos prometer nada que a engenharia não sustenta.</string>
+    <string name="onboarding_shizuku_title">Shizuku (opcional)</string>
+    <string name="onboarding_shizuku_body">O Shizuku habilita diagnósticos extras de GPU via comandos privilegiados. É totalmente opcional: sem ele o app continua funcionando com diagnósticos reduzidos e nunca crasha.</string>
+
+    <string name="lim_1">Drivers Turnip só podem ser aplicados ao código rodando dentro do processo controlado por este app. Não é possível injetar um driver à força em um app qualquer já instalado que não foi feito para isso.</string>
+    <string name="lim_2">Apps e jogos com engines nativas pesadas (Unity, Unreal) carregam as próprias bibliotecas nativas; compatibilidade universal com qualquer APK da Play Store não é garantida, especialmente no Android 13+ onde as restrições de hidden APIs são mais rígidas.</string>
+    <string name="lim_3">O Turnip suporta apenas GPUs Adreno 6xx, 7xx e mais novas. Dispositivos com Adreno 5xx ou anterior devem manter o driver proprietário.</string>
+    <string name="lim_4">O espaço virtual é um runtime de plugins com melhor esforço: apps simples e medianos geralmente funcionam; alguns podem se recusar a iniciar, e o app sempre explicará o motivo em vez de crashar.</string>
+    <string name="lim_5">Nada é escrito fora do sandbox deste app. Todos os APKs, drivers e logs ficam no armazenamento privado do Turnip Space.</string>
+
+    <!-- Home -->
+    <string name="home_title">Turnip Space</string>
+    <string name="home_settings">Configurações</string>
+    <string name="home_drivers">Drivers</string>
+    <string name="home_empty_title">Nenhum espaço virtual ainda</string>
+    <string name="home_empty_body">Crie um espaço, importe um APK e escolha um driver Turnip para começar.</string>
+    <string name="create_space">Criar espaço</string>
+    <string name="space_name">Nome do espaço</string>
+    <string name="create">Criar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="launch">Executar</string>
+    <string name="open">Abrir</string>
+    <string name="delete">Excluir</string>
+    <string name="remove_space">Remover espaço</string>
+    <string name="remove_space_confirm">Isso apaga o espaço e todas as cópias de APK/driver dentro dele. Não pode ser desfeito.</string>
+
+    <!-- Space detail -->
+    <string name="space_section_app">App</string>
+    <string name="space_section_driver">Driver Vulkan</string>
+    <string name="space_section_diagnostics">Diagnóstico</string>
+    <string name="install_apk">Instalar APK no espaço</string>
+    <string name="choose_apk">Escolher arquivo APK</string>
+    <string name="installing_apk">Instalando APK…</string>
+    <string name="no_app_installed">Nenhum app instalado neste espaço ainda.</string>
+    <string name="select_driver">Selecionar driver para este espaço</string>
+    <string name="no_driver_selected">Driver do sistema (sem override Turnip)</string>
+    <string name="driver_set">Driver personalizado selecionado</string>
+    <string name="manage_drivers">Gerenciar drivers</string>
+    <string name="export_space_logs">Exportar log de execução</string>
+    <string name="launch_failed">Falha ao executar</string>
+    <string name="engine_hook_ok">Hooks do engine ativos — a activity do plugin será trocada na execução.</string>
+    <string name="engine_hook_failed">Hooks do engine indisponíveis nesta versão do Android. A execução mostrará um diagnóstico. Veja Configurações → Limitações.</string>
+    <string name="driver_preloaded">Driver Turnip pré-carregado no processo.</string>
+    <string name="driver_preload_failed">Falha ao pré-carregar driver: %1$s</string>
+
+    <!-- Driver manager -->
+    <string name="drivers_title">Drivers Vulkan</string>
+    <string name="import_driver">Importar driver .zip</string>
+    <string name="import_driver_hint">Zip compatível com AdrenoTools contendo meta.json e libvulkan_freedreno.so (builds de CI do Turnip).</string>
+    <string name="gpu_detected">GPU detectada</string>
+    <string name="gpu_unknown">Ainda não foi possível detectar a GPU.</string>
+    <string name="driver_compatible_hint">Compatível com esta GPU</string>
+    <string name="driver_incompatible_hint">Incompatível com esta GPU</string>
+    <string name="driver_compat_unknown">Compatibilidade desconhecida para esta GPU</string>
+    <string name="driver_delete">Excluir driver</string>
+    <string name="no_drivers">Nenhum driver importado ainda. Importe um zip Turnip do AdrenoTools para começar.</string>
+    <string name="api_version">API</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Configurações</string>
+    <string name="shizuku_section">Shizuku</string>
+    <string name="shizuku_available">Shizuku disponível</string>
+    <string name="shizuku_unavailable">Shizuku não está instalado ou não está em execução. O app funciona normalmente sem ele.</string>
+    <string name="shizuku_request_permission">Conceder permissão do Shizuku</string>
+    <string name="shizuku_granted">Permissão do Shizuku concedida — diagnósticos estendidos de GPU habilitados.</string>
+    <string name="shizuku_denied">Permissão do Shizuku negada — modo degradado (sem crash).</string>
+    <string name="logs_section">Logs</string>
+    <string name="export_logs">Exportar log completo</string>
+    <string name="clear_logs">Limpar buffer de log</string>
+    <string name="about_section">Sobre</string>
+    <string name="limitations_title">O que este app não consegue fazer</string>
+
+    <!-- Errors / results -->
+    <string name="error_invalid_apk">APK inválido ou corrompido (metadados não puderam ser lidos).</string>
+    <string name="error_apk_too_large">APK grande demais para o espaço virtual (limite de 2 GB).</string>
+    <string name="error_copy_failed">Não foi possível copiar o arquivo para o sandbox do app.</string>
+    <string name="error_invalid_driver">Zip de driver inválido: meta.json ausente ou ilegível.</string>
+    <string name="error_no_vulkan_so">Nenhum libvulkan*.so encontrado dentro do zip do driver.</string>
+    <string name="error_no_app">Este espaço ainda não tem um app instalado. Instale um APK primeiro.</string>
+    <string name="error_no_launcher_activity">O APK não declara uma activity inicializável.</string>
+    <string name="error_plugin_load_failed">Não foi possível carregar o APK no espaço virtual: %1$s</string>
+    <string name="error_launch_failed">Não foi possível iniciar o espaço virtual: %1$s</string>
+    <string name="error_space_not_found">Espaço não encontrado.</string>
+    <string name="error_generic">Erro inesperado: %1$s</string>
+    <string name="space_created">Espaço criado</string>
+    <string name="driver_imported">Driver importado</string>
+    <string name="driver_deleted">Driver excluído</string>
+    <string name="space_deleted">Espaço removido</string>
+    <string name="ok">OK</string>
+    <string name="yes">Sim</string>
+    <string name="author">Autor</string>
+    <string name="version_label">Versão</string>
+    <string name="not_set">Não definido</string>
+    <string name="warning">Atenção</string>
+    <string name="continue_btn">Continuar</string>
+</resources>
